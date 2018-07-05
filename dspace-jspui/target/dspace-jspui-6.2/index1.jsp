@@ -1,0 +1,71 @@
+<%-- 
+    Document   : index
+    Created on : 17 Jun, 2018, 10:24:49 AM
+    Author     : prasad
+--%>
+
+<%@page import="java.io.DataInputStream"%>
+<%@page import="java.io.FileInputStream"%>
+
+<!doctype html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="jquery.js"></script>
+<style type="text/css">
+.wordcloud {
+border: 1px solid #036;
+height: 5in;
+margin: 0.1in auto;
+padding: 0;
+page-break-after: always;
+page-break-inside: avoid;
+width: 5in;
+
+}
+</style>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+<header style="margin-top:10px;">
+</header>
+<div role="main">
+
+    <div id="wordcloud2" class="wordcloud">
+        <%
+            String fName = "/home/dspace/dspace-6.2-src-release/dspace-jspui/src/main/webapp/wordcloud.txt";
+            String thisLine; 
+            DataInputStream myInput = new DataInputStream(new FileInputStream(fName));
+            String[] words=myInput.readLine().split(" ");
+            String[] freq = myInput.readLine().split(" ");
+             for(int i=0;i<words.length;i++){
+                out.write("<span data-weight = "+Integer.parseInt(freq[i])+">"+words[i]+"</span>");
+            }
+%>
+        
+    </div>
+<script>
+			$(document).ready(function(){
+				
+				$("#wordcloud2").awesomeCloud({
+					"size" : {
+						"grid" : 9,
+						"factor" : 1
+					},
+					"options" : {
+						"color" : "random-dark",
+						"rotationRatio" : 0.35
+					},
+					"font" : "'Times New Roman', Times, serif",
+					"shape" : "circle"
+				});
+				
+			});
+</script> `
+</body>
+</html>

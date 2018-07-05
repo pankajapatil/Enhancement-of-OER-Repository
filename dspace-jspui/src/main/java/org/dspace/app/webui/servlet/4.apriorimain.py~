@@ -1,0 +1,85 @@
+import sys
+import json 
+import apriori_lib
+
+user=sys.argv[1]	#user for which recommendations have to be known. arg[0] is the program name
+
+inputarg = dict()
+apriori_lib.readConfigFile(inputarg,"apconfig")
+
+
+transactions = []
+items = set()
+apriori_lib.readFile(transactions,items,inputarg["inputfile"],inputarg["separator"])
+
+
+list_is = []
+list_is2 = []	
+itemsets = []
+support = []
+list_is.append('-1')
+list_is2.append(list(list_is))
+itemsets.append(list(list_is2))	##itemset[0]=-1 as 0-itemset is not possible
+support.append(list(list_is))
+del list_is[:]
+del list_is2[:]
+
+thresh_supp = float(inputarg["thresh_support"])
+thresh_conf = float(inputarg["thresh_confidence"])
+items=list(items)
+
+count_itemset = apriori_lib.computeItemset(transactions,items,thresh_supp,support,itemsets)
+
+
+
+asso_rules = dict()
+confidence = dict()	
+apriori_lib.associationRules(asso_rules,confidence,thresh_conf,itemsets,support,items,count_itemset)
+
+#print asso_rules
+#print confidence
+
+userviews=[]
+myfile=open(inputarg["inputfile"],'r')
+lines=myfile.readlines()
+for line in lines:
+	split_list = line.split(inputarg["separator"])
+	if split_list[0]==user:
+		for i in range(1,len(split_list)-1):	
+			userviews.append(split_list[i])	
+		break
+
+#get recommendations for 'user'
+recommendations = set()
+for x in userviews:
+	if x in asso_rules:
+		for i in range(len(asso_rules[x])):
+			if asso_rules[x][i] not in userviews:
+				recommendations.add(asso_rules[x][i])
+
+freq=[]		#list of single items in descending order of support
+pair=[]
+for it in range(len(itemsets[1])):
+	pair.append(itemsets[1][it][0])
+	pair.append(support[1][it][0])
+	freq.append(list(pair))	
+	del pair[:]
+
+freq.sort(reverse=True,key=lambda x: x[1])	#sort according to second element i.e support
+	
+if len(recommendations)==0:
+	print "Empty"
+	for x in range(0,5):			#add top 5 items in recommendations
+		recommendations.add(freq[x][0])
+
+#using json
+print recommendations
+recommend=dict()
+recommend["recommendations"]=list(recommendations)
+s=json.dumps(recommend)
+#print s
+
+
+################################################  THE END   ##########################################################
+
+

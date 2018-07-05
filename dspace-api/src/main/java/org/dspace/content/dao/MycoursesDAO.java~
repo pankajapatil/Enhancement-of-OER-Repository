@@ -1,0 +1,47 @@
+/**
+ * The contents of this file are subject to the license and copyright
+ * detailed in the LICENSE and NOTICE files at the root of the source
+ * tree and available online at
+ *
+ * http://www.dspace.org/license/
+ */
+package org.dspace.content.dao;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.ListUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.dspace.content.MetadataField;
+import org.dspace.core.AbstractHibernateDSODAO;
+import org.dspace.core.Context;
+import org.dspace.eperson.EPerson;
+import org.dspace.eperson.Group;
+import org.dspace.content.Mycourses;
+import org.dspace.eperson.dao.EPersonDAO;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import org.springframework.orm.hibernate3.HibernateTemplate;  
+
+import java.sql.SQLException;
+import java.io.IOException;
+import java.util.*;
+
+/**
+ * Hibernate implementation of the Database Access Object interface class for the Mycourse object.
+ * This class is responsible for all database calls for the Mycourse object and is autowired by spring
+ * This class should never be accessed directly.
+ *
+ * @author kevinvandevelde at atmire.com
+ */
+public class MycoursesDAO extends AbstractHibernateDSODAO<Mycourses>
+{
+    
+    public List<Collection> find(Context context) throws SQLException {
+        return list(createQuery(context, "SELECT DISTINCT col collection col"));
+    }
+   
+}
