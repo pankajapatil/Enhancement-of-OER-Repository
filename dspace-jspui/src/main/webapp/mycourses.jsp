@@ -1,0 +1,106 @@
+
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%@ page import="org.dspace.eperson.EPerson" %>
+<%@ page import="org.dspace.eperson.Mycourse" %>
+<%@ page import="org.dspace.content.Collection" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.dspace.content.Bitstream"%>
+<%@ page import="org.dspace.core.ConfigurationManager" %>
+<%@ page import="org.apache.commons.lang.StringUtils"%>
+<%@ page import="org.dspace.app.webui.util.UIUtil" %>
+<%@ page import="org.dspace.content.factory.ContentServiceFactory" %>
+<%@ page import="org.dspace.content.service.CollectionService" %>
+<%@ page import="org.dspace.browse.ItemCounter" %>
+
+<%@ page import="org.dspace.content.service.ItemService" %>
+<%@ page import="org.dspace.content.*"%>
+<%@ page import="org.dspace.core.Utils" %>
+<%@ page import="java.io.*" %>
+<%@ page import="java.util.*" %>
+
+
+<dspace:layout titlekey="jsp.community-list.title">
+<%
+	ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
+	CollectionService colServ = ContentServiceFactory.getInstance().getCollectionService();
+  	List<Collection> cols = ((List<Collection>)request.getAttribute("mycourse"));
+	List<Collection> rating = ((List<Collection>)request.getAttribute("rating"));
+%>
+	
+	<h1>My Courses</h1>
+<%
+	 if (cols != null && cols.size() > 0)
+        {
+            out.println("<ul class=\"media-list\">");
+            for (int j = 0; j < cols.size(); j++)
+            {
+                out.println("<li class=\"media well\">");
+                
+                Bitstream logoCol = cols.get(j).getLogo();
+                if (logoCol != null)
+                {
+                	out.println("<a class=\"pull-left col-md-2\" href=\"" + request.getContextPath() + "/handle/" 
+                		+ cols.get(j).getHandle() + "\"><img class=\"media-object img-responsive\" src=\"" + 
+                		request.getContextPath() + "/retrieve/" + logoCol.getID() + "\" alt=\"collection logo\"></a>");
+                }
+                out.println("<div class=\"media-body\"><h4 class=\"media-heading\"><a href=\"" + request.getContextPath() + "/handle/" + cols.get(j).getHandle() + "\">" + cols.get(j).getName() +"</a>");
+				if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
+                {
+                    out.println(" [" + ic.getCount(cols.get(j)) + "]");
+                }
+				out.println("</h4>");
+				if (StringUtils.isNotBlank(colServ.getMetadata(cols.get(j), "short_description")))
+				{
+					out.println(colServ.getMetadata(cols.get(j), "short_description"));
+				}
+				out.println("</div>");
+		%>
+	<%-- CHANGE to add button --%>
+	<form method="get" class="btn-group" action="<%= request.getContextPath() %>/course-deleted">
+	<input type="hidden" name="collection" value="<%= cols.get(j).getHandle() %>" />
+	<input type="submit" class="btn btn-default" name="delete-course" value="delete"/>
+	</form>
+<%
+                out.println("</li>");
+            }
+	   
+            out.println("</ul>");
+        }
+
+	
+%>
+
+<h1>Recommended for you</h1>
+<%
+	  List<Item> items=(List<Item>)request.getAttribute("items");   
+	
+	ItemService itemService = ContentServiceFactory.getInstance().getItemService();
+%>
+<%	for (int i = 0; i < items.size(); i++)
+	{
+		List<MetadataValue> dcv = itemService.getMetadata(items.get(i), "dc", "title", null, Item.ANY);
+		String displayTitle = "Untitled";
+		if (dcv != null)
+		{
+			if (dcv.size() > 0)
+			{
+				displayTitle = Utils.addEntities(dcv.get(0).getValue());
+			}
+		}
+%>
+<ul class="media-list">
+<li class="media well">
+<div class="media-body"><h4 class="media-heading" ><a href="<%= request.getContextPath() %>/handle/<%= items.get(i).getHandle() %>"><%= displayTitle %></a><h4></div>
+</li>
+</ul>
+<% } %>
+
+<div class="row">
+	<%@ include file="discovery/static-tagcloud-facet.jsp" %>
+</div>
+</dspace:layout>
+

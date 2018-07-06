@@ -1,0 +1,124 @@
+item
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+Untitled
+b7b1b7e1-3a94-439e-ade7-f9ef898e272f
+Mudra
+36781c80-74f3-427f-8569-d55321306d74
+Sahu
+36781c80-74f3-427f-8569-d55321306d74
+
+36781c80-74f3-427f-8569-d55321306d74
+en
+36781c80-74f3-427f-8569-d55321306d74
+dspace
+e41ee777-daa9-4ad9-98a5-13425d1b23ed
+testing
+e41ee777-daa9-4ad9-98a5-13425d1b23ed
+twet
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+dspace1
+e1e182b9-a464-49c6-89a9-7453f23404bd
+testing1
+e1e182b9-a464-49c6-89a9-7453f23404bd
+
+e1e182b9-a464-49c6-89a9-7453f23404bd
+
+e1e182b9-a464-49c6-89a9-7453f23404bd
+
+e1e182b9-a464-49c6-89a9-7453f23404bd
+
+e1e182b9-a464-49c6-89a9-7453f23404bd
+ORIGINAL
+87e721c9-1b20-4e56-87f2-53c53c081a0d
+Mudra
+45b7341c-6031-4c5c-8383-7414a82fd8f0
+Sahu
+45b7341c-6031-4c5c-8383-7414a82fd8f0
+
+45b7341c-6031-4c5c-8383-7414a82fd8f0
+en
+45b7341c-6031-4c5c-8383-7414a82fd8f0
+computer science
+ba4336ee-0563-4b0b-84ea-d4d4fc99485e
+cs
+ba4336ee-0563-4b0b-84ea-d4d4fc99485e
+2018-06-20T07:01:59Z
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+2018-06-20T07:01:59Z
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+quality control.pdf
+0b6a3f7f-6ad7-4dbe-b300-1bb8ee8ee2a2
+mudra, sahu
+7d72e5b6-7704-476f-9d38-8d5f261016c7
+abc
+7d72e5b6-7704-476f-9d38-8d5f261016c7
+xyz
+7d72e5b6-7704-476f-9d38-8d5f261016c7
+2018-07-11
+7d72e5b6-7704-476f-9d38-8d5f261016c7
+cs1
+9f445d1d-8fa5-47d5-8d32-e8b860e61328
+twstq11
+9f445d1d-8fa5-47d5-8d32-e8b860e61328
+weqeqwe
+7d72e5b6-7704-476f-9d38-8d5f261016c7
+dqw
+7d72e5b6-7704-476f-9d38-8d5f261016c7
+ORIGINAL
+f4af25dc-153f-4958-a515-1cdf352d30e6
+/home/dspace/upload/quality control.pdf
+0b6a3f7f-6ad7-4dbe-b300-1bb8ee8ee2a2
+quality control.pdf
+0b3af3ef-fc2c-4942-96b1-d2254e99201c
+/home/dspace/upload/quality control.pdf
+0b3af3ef-fc2c-4942-96b1-d2254e99201c
+
+0b3af3ef-fc2c-4942-96b1-d2254e99201c
+cs2
+216554d5-e1c6-4975-be5d-16a435fdbdae
+cs2desc
+216554d5-e1c6-4975-be5d-16a435fdbdae
+12312, 4134
+e555b73c-4e0c-453a-bc10-e1509fa18348
+item
+e555b73c-4e0c-453a-bc10-e1509fa18348
+item1
+e555b73c-4e0c-453a-bc10-e1509fa18348
+2018-07-12
+e555b73c-4e0c-453a-bc10-e1509fa18348
+item2
+e555b73c-4e0c-453a-bc10-e1509fa18348
+ORIGINAL
+495be94e-1eef-4a2e-9ed6-05efa3f2667a
+Jumanji.1995.720p.BrRip.x264.BOKUTOX.YIFY.srt
+b3ac2a4b-5443-4f61-be3b-a4f5760d7710
+/home/dspace/upload/Jumanji.1995.720p.BrRip.x264.BOKUTOX.YIFY.srt
+b3ac2a4b-5443-4f61-be3b-a4f5760d7710
+
+b3ac2a4b-5443-4f61-be3b-a4f5760d7710
+mudra, sahu
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+adas
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+wadq
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+
+0b6a3f7f-6ad7-4dbe-b300-1bb8ee8ee2a2
+LICENSE
+1391e4e0-a288-42b8-bdea-15f1119ba082
+license.txt
+81a5ac06-022e-4b3e-a464-217ab669c7f3
+Written by org.dspace.content.LicenseUtils
+81a5ac06-022e-4b3e-a464-217ab669c7f3
+Submitted by Mudra Sahu (mudrasahu1997@gmail.com) on 2018-06-20T07:01:59Z
+No. of bitstreams: 1
+quality control.pdf: 7242822 bytes, checksum: 021cc825ad6e5b932552e1ae0d7f3fbb (MD5)
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+http://10.130.9.111/jspui/handle/123456789/7
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+Made available in DSpace on 2018-06-20T07:01:59Z (GMT). No. of bitstreams: 1
+quality control.pdf: 7242822 bytes, checksum: 021cc825ad6e5b932552e1ae0d7f3fbb (MD5)
+  Previous issue date: 2018-06-02
+5bf53617-8b2d-4da2-9765-2908c4e7f51d
+2018-06-02
+5bf53617-8b2d-4da2-9765-2908c4e7f51d

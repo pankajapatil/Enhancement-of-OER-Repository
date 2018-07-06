@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Implementation-Vendor: DuraSpace
+Implementation-Title: DSpace REST :: API and Implementation
+Implementation-Version: 6.2
+Implementation-Vendor-Id: org.dspace
+Built-By: dspace
+Build-Jdk: 1.7.0_181
+Specification-Vendor: DuraSpace
+Specification-Title: DSpace REST :: API and Implementation
+Created-By: Apache Maven 3.0.5
+Implementation-URL: http://demo.dspace.org
+Specification-Version: 6.2
+Archiver-Version: Plexus Archiver
+
