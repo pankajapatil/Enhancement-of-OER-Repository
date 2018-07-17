@@ -1,0 +1,35 @@
+# from nltk.stem import PorterStemmer
+import datetime
+import os
+
+stop = ['what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'is', 'are', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'now', 'd', 'll', 'm', 'o','y']
+output = open('/home/dspace/dspace-6.2-src-release/dspace-jspui/src/main/webapp/wordcloud.txt','w');
+#ps = PorterStemmer()
+now = str(datetime.datetime.now()).split();
+fName = "/home/dspace/log/dspace.log."+now[0];
+corpus = []
+if os.path.exists(fName):
+	f = open(fName,"r") 
+	lines = f.readlines()
+	for line in lines:
+		start = line.find('query="')+7; 
+		if(start != 6): # since we are adding 7 to skip substring...
+			word = line[start:line.find('"',start)].encode("utf-8").lower();
+			words = word.split();
+			print(words)
+			result  = [word for word in words if word not in stop]
+			filtered = ''.join(result)
+			corpus.append(filtered);  # add ps.stem before appending word 														#if u need stemming
+	f.close()
+
+
+corpus = {x:corpus.count(x)*20 for x in corpus} # word with frequency
+
+output.write(' '.join(corpus.keys()));
+output.write('\n');
+output.write(" ".join(map(str,corpus.values())))
+output.close();
+
+
+
+# standard stopwords list , use as per requirement ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're", "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', "she's", 'her', 'hers', 'herself', 'it', "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 'haven', "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]"""
